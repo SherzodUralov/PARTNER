@@ -23,7 +23,7 @@ namespace PARTNER.Models
         public string Mahalla { get; set; }
         public int GroupId { get; set; }
         public int Cours { get; set; }
-        public int LiveId { get; set; }
+        public Lives? LiveId { get; set; }
         public int Contract { get; set; }
         public int Familly { get; set; }
         public int KamTam { get; set; }
