@@ -13,7 +13,7 @@ namespace PARTNER.Models
         public string SureName { get; set; }
         public DateTime Birthday { get; set; }
         public string Passport { get; set; }
-        public Gender Gender { get; set; }
+        public Gender? Gender { get; set; }
         public string MobileNamber { get; set; }
         public string TelegramNamber { get; set; }
         public string Nation { get; set; }

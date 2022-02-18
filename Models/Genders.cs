@@ -3,11 +3,8 @@
 /// <summary>
 /// Summary description for Class1
 /// </summary>
-public enum Gender
+public class Genders
 {
-	public Genter()
-	{
-		Man,
-		Woman
-	}
+	Man,
+	Woman
 }
