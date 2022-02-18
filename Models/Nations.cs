@@ -3,7 +3,7 @@
 /// <summary>
 /// Summary description for Class1
 /// </summary>
-public class Nations
+public enum Nations
 {
 		Uzbek,
 		Qozoq,
