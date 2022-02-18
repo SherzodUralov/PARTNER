@@ -3,9 +3,9 @@
 /// <summary>
 /// Summary description for Class1
 /// </summary>
-public enum Lives
+public enum Contracts
 {
-	Uylangan,
-	Turmushga chiqqan,
-	Buydoq
+	Kontrakt,
+	Grand,
+	Super kontrakt
 }
