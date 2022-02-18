@@ -17,8 +17,8 @@ namespace PARTNER.Models
         public string TelegramNamber { get; set; }
         public int Image { get; set; }
         public string Resime { get; set; }
-        public int Gender { get; set; }
-        public int Degree { get; set; }
+        public Genders? Gender { get; set; }
+        public Degrees? Degree { get; set; }
 
     }
 }
