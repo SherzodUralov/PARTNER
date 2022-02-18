@@ -26,7 +26,7 @@ namespace PARTNER.Models
         public int LiveId { get; set; }
         public Contracts? Contract { get; set; }
         public Famillys? Familly { get; set; }
-        public int KamTam { get; set; }
+        public KamTams? KamTam { get; set; }
         public string BoquvchiId { get; set; }
         public int NogironID { get; set; }
         public int DegreeId { get; set; }
