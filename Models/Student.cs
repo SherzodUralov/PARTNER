@@ -19,7 +19,7 @@ namespace PARTNER.Models
         public Nations? Nation { get; set; }
         public string ParentsId { get; set; }
         public string InteristId { get; set; }
-        public Districts? District { get; set; }
+        public int DistrictId { get; set; }
         public string Mahalla { get; set; }
         public int GroupId { get; set; }
         public int Cours { get; set; }
@@ -29,7 +29,7 @@ namespace PARTNER.Models
         public KamTams? KamTam { get; set; }
         public string BoquvchiId { get; set; }
         public int NogironID { get; set; }
-        public int DegreeId { get; set; }
+        public Degrees? DegreeId { get; set; }
 
 
 

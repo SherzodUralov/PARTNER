@@ -3,7 +3,7 @@
 /// <summary>
 /// Summary description for Class1
 /// </summary>
-public enum Districts
+public enum Degrees
 {
 	"O'rta maxsus",
 	Oliy,
