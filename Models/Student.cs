@@ -22,7 +22,7 @@ namespace PARTNER.Models
         public int DistrictId { get; set; }
         public string Mahalla { get; set; }
         public int GroupId { get; set; }
-        public int CoursId { get; set; }
+        public int Cours { get; set; }
         public int LiveId { get; set; }
         public int Contract { get; set; }
         public int Familly { get; set; }
