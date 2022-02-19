@@ -19,11 +19,12 @@ namespace PARTNER.Models
         public Nations? Nation { get; set; }
         public string ParentsId { get; set; }
         public string InteristId { get; set; }
+        public int RegionId { get; set; }
         public int DistrictId { get; set; }
         public string Mahalla { get; set; }
         public int GroupId { get; set; }
         public int Cours { get; set; }
-        public int LiveId { get; set; }
+        public int LiveReadyId { get; set; }
         public Contracts? Contract { get; set; }
         public Famillys? Familly { get; set; }
         public KamTams? KamTam { get; set; }
