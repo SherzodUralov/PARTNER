@@ -6,5 +6,5 @@
 public enum KamTams
 {
 	Yaxshi,
-	"Og'ir"
+	Ogir
 }

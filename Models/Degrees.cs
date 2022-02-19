@@ -5,7 +5,7 @@
 /// </summary>
 public enum Degrees
 {
-	"O'rta maxsus",
+	Urta_maxsus,
 	Oliy,
 	Magistr,
 	PHD

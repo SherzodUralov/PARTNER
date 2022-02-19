@@ -7,5 +7,5 @@ public enum Contracts
 {
 	Kontrakt,
 	Grand,
-	Super kontrakt
+	Super_kontrakt
 }

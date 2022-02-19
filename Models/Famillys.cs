@@ -6,6 +6,6 @@
 public enum Famillys
 {
 	Uylangan,
-	Turmushga chiqqan,
+	Turmushga_chiqqan,
 	Buydoq
 }
