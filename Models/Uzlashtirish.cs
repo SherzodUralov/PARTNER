@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 namespace PARTNER.Models
 {
-    public enum LiveReady
+    public enum Uzlashtrish
     {
-        Ijara,
-        Yotoqxona
-
+            Qoniqarli,
+            Yaxshi,
+            Alo
     }
 }
