@@ -27,5 +27,10 @@ namespace PARTNER.Models
         [Column("Uzlashtirish")]
         [Display(Name = "Uzlashtirish")]
         public Uzlashtrish? Uzlashtirish { get; set; }
+        [ForeignKey("StudentId")]
+        [Column("StudentId")]
+        [Display(Name ="StudentId")]
+        public virtual Student StudentId { get; set; }
+
     }
 }
