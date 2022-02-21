@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 
 namespace PARTNER.Models
 {
-    public enum LiveReady
+    public class LiveReady
     {
-        Ijara,
-        Yotoqxona
+        public int LiveReadyId { get; set; }
+        public string Mahalla { get; set; }
+        public int DistrictId { get; set; }
+        public LiveTypes? LiveType { get; set; }
 
     }
 }
