@@ -33,6 +33,14 @@ namespace PARTNER.Models
         [Column("Birthday")]
         [Display(Name ="Birthday")]
         public DateTime Birthday { get; set; }
+        [ForeignKey("RegionId")]
+        [Column("RegionId")]
+        [Display(Name ="RegionId")]
+        public virtual Region RegionId { get; set; }
+        [ForeignKey("DistrictId")]
+        [Column("DistrictId")]
+        [Display(Name ="DistrictId")]
+        public virtual District DistrictId { get; set; }
         [Required]
         [Column("Staj")]
         [Display(Name ="Staj")]
@@ -47,11 +55,9 @@ namespace PARTNER.Models
         [Display(Name = "TelegramNamber")]
         [MaxLength(15)]
         public string TelegramNamber { get; set; }
-        [Required]
         [Column("Image")]
         [Display(Name = "Image")]
-        public int Image { get; set; }
-        [Required]
+        public string PhotoFilePath { get; set; }
         [Column("Resime")]
         [Display(Name = "Resime")]
         public string Resime { get; set; }

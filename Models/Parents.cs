@@ -41,8 +41,18 @@ namespace PARTNER.Models
         [Column("TelegramNamber")]
         [Display(Name ="TelegramNamber")]
         public string TelegramNamber { get; set; }
-        public int DistrictId { get; set; }
-        public int NogironId { get; set; }
+        [ForeignKey("RegionId")]
+        [Column("RegionId")]
+        [Display(Name ="RegionId")]
+        public virtual Region RegionId { get; set; }
+        [ForeignKey("DistrictId")]
+        [Column("DistrictId")]
+        [Display(Name ="DistrictId")]
+        public virtual District DistrictId { get; set; }
+        [ForeignKey("NogironId")]
+        [Column("NogironId")]
+        [Display(Name ="NogironId")]
+        public virtual Nogiron NogironId { get; set; }
         [MaxLength(28)]
         [Column("Mahalla")]
         [Display(Name ="Mahalla")]
