@@ -8,5 +8,7 @@ namespace PARTNER.Models
     public enum Typeees
     {
         one,
+        two,
+        three
     }
 }

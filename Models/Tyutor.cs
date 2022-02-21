@@ -10,9 +10,10 @@ namespace PARTNER.Models
     public class Tyutor
     {
         [Required]
-        [Column("TyutorId")]
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Column("TyutorId")]
+        [Display(Name ="TyutorId")]
         public int TyutorId { get; set; }
         [Required]
         [Column("FirstName")]
