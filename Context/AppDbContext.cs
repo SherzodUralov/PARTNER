@@ -14,19 +14,19 @@ namespace PARTNER.Context
         {
 
         }
-        public virtual DbSet<Student> Students { get; set; }
-        public virtual DbSet<Branch> Branches { get; set; }
-        public virtual DbSet<Check> Checks { get; set; }
-        public virtual DbSet<District> Districts { get; set; }
-        public virtual DbSet<Faculty> Faculties { get; set; }
-        public virtual DbSet<Group> Groups { get; set; }
-        public virtual DbSet<Interist> Interists { get; set; }
-        public virtual DbSet<LiveReady> LiveReadies { get; set; }
-        public virtual DbSet<Nogiron> Nogirons { get; set; }
-        public virtual DbSet<Parents> Parents { get; set; }
-        public virtual DbSet<Region> Regions { get; set; }
-        public virtual DbSet<Speciality> Specialities { get; set; }
-        public virtual DbSet<Tyutor> Tyutors { get; set; }
-        public virtual DbSet<Unversty> Unversties { get; set; }
+        public  DbSet<Student> Students { get; set; }
+        public  DbSet<Branch> Branches { get; set; }
+        public  DbSet<Check> Checks { get; set; }
+        public  DbSet<District> Districts { get; set; }
+        public  DbSet<Faculty> Faculties { get; set; }
+        public  DbSet<Group> Groups { get; set; }
+        public  DbSet<Interist> Interists { get; set; }
+        public  DbSet<LiveReady> LiveReadies { get; set; }
+        public  DbSet<Nogiron> Nogirons { get; set; }
+        public  DbSet<Parents> Parents { get; set; }
+        public  DbSet<Region> Regions { get; set; }
+        public  DbSet<Speciality> Specialities { get; set; }
+        public  DbSet<Tyutor> Tyutors { get; set; }
+        public  DbSet<Unversty> Unversties { get; set; }
     }
 }
