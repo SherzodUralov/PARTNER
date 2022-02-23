@@ -9,19 +9,10 @@ namespace PARTNER.Models
 {
     public class Nogiron
     {
-        [Required]
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Column("NogironId")]
-        [Display(Name ="NogironId")]
-        public int NogironId { get; set; }
-        [Column("NogironName")]
-        [Display(Name ="NogironName")]
-        [MaxLength(25)]
+        public string Code { get; set; }
+        [MaxLength(30)]
         public int NogironName { get; set; }
-        [Required]
-        [Column("Typeee")]
-        [Display(Name ="Typeee")]
         public Typeees? Typeee { get; set; }
     }
 }

@@ -9,15 +9,9 @@ namespace PARTNER.Models
 {
     public class Region
     {
-        [Required]
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Column("RegionId")]
-        [Display(Name ="RegionId")]
-        public int RegionId { get; set; }
-        [Column("RegionName")]
-        [Display(Name ="RegionName")]
-        [MaxLength(25)]
+        public string Code { get; set; }
+        [MaxLength(35)]
         public string RegionName { get; set; }
 
     }

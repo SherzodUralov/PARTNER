@@ -9,20 +9,15 @@ namespace PARTNER.Models
 {
     public class District
     {
-        [Required]
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Column("DistrictId")]
-        [Display(Name ="DistrictId")]
-        public int DistrictId { get; set; }
-        [Column("DistrictName")]
-        [Display(Name ="DistrictName")]
+        public string Code { get; set; }
+        [Required]
         [MaxLength(25)]
+        [Display(Name ="DistrictName")]
         public string DistrictName { get; set; }
-        [ForeignKey("RegionId")]
-        [Column("RegionId")]
-        [Display(Name ="RegionId")]
-        public virtual Region RegionId { get; set; }
+        [ForeignKey("Region")]
+        public string RegionCode { get; set; }
+        public virtual Region Region { get; set; }
 
 
     }

@@ -9,19 +9,13 @@ namespace PARTNER.Models
 {
     public class Branch
     {
-        [Required]
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Column("BranchId")]
-        [Display(Name ="BranchId")]
         public int BranchId { get; set; }
-        [Column("BranchName")]
+        [Required]
+        [MaxLength(40)]
         [Display(Name ="BranchName")]
-        [MaxLength(35)] 
         public string BranchName { get; set; }
-        [ForeignKey("FacultyId")]
-        [Column("FacultyId")]
-        [Display(Name ="FacultyId")]
-        public virtual Faculty FacultyId { get; set; }
+        [ForeignKey("Faculty")]
+        public int FacultyId { get; set; }
+        public virtual Faculty Faculty { get; set; }
     }
 }

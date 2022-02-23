@@ -9,20 +9,12 @@ namespace PARTNER.Models
 {
     public class Unversty
     {
-        [Required]
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Column("UnverstyId")]
-        [Display(Name ="UnverstyId")]
         public int UnverstyId { get; set; }
-        [Column("UnverstyName")]
-        [Display(Name ="UnverstyName")]
-        [MaxLength(35)]
+        [Required]
+        [MaxLength(40)]
         public string UnverstyName { get; set; }
-        [ForeignKey("RegionId")]
-        [Column("RegionId")]
-        [Display(Name ="RegionId")]
-        public virtual Region RegionId { get; set; }
+        public int RegionId { get; set; }
+        public virtual Region Region { get; set; }
 
     }
 }

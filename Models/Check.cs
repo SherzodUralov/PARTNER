@@ -7,30 +7,21 @@ using System.Threading.Tasks;
 
 namespace PARTNER.Models
 {
+    [Table("CHECK")]
     public class Check
     {
-        [Required]
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Column("CheckId")]
-        [Display(Name = "CheckId")]
         public int CheckId { get; set; }
         [Required]
-        [Column("YearMonth")]
-        [Display(Name = "YearMonth")]
+        [MaxLength(19)]
+        [Display(Name ="YearMonth")]
         public string YearMonth { get; set; }
         [Required]
-        [Column("Timee")]
-        [Display(Name = "Timee")]
-        public int Timee { get; set; }
-        [Required]
-        [Column("Uzlashtirish")]
-        [Display(Name = "Uzlashtirish")]
+        [Display(Name ="Timee")]
+        public int Timee { get; set; }   
         public Uzlashtrish? Uzlashtirish { get; set; }
-        [ForeignKey("StudentId")]
-        [Column("StudentId")]
-        [Display(Name ="StudentId")]
-        public virtual Student StudentId { get; set; }
+        [ForeignKey("Student")]
+        public int StudentId { get; set; }   
+        public virtual Student Student { get; set; }
 
     }
 }

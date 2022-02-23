@@ -9,23 +9,11 @@ namespace PARTNER.Models
 {
     public class LiveReady
     {
-        [Required]
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Column("LiveReadyId")]
-        [Display(Name ="LiveReadyId")]
-        public int LiveReadyId { get; set; }
-        [Column("Mahalla")]
-        [Display(Name ="Mahalla")]
-        [MaxLength(35)]
+        public string Code { get; set; }
         public string Mahalla { get; set; }
-        [ForeignKey("DistrictId")]
-        [Column("DistrictId")]
-        [Display(Name ="DistricId")]
-        public virtual District DistrictId { get; set; }
-        [Required]
-        [Column("LiveType")]
-        [Display(Name ="LiveType")]
+        public string DistrictCode { get; set; }
+        public virtual District District { get; set; }
         public LiveTypes? LiveType { get; set; }
 
     }
