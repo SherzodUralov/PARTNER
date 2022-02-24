@@ -10,6 +10,7 @@ namespace PARTNER.Models
     public class Group
     {
         [Key]
+        [MaxLength(6)]
         public string Code { get; set; }
         [Required]
         [MaxLength(40)]

@@ -10,6 +10,7 @@ namespace PARTNER.Models
     public class District
     {
         [Key]
+        [MaxLength(4)]
         public string Code { get; set; }
         [Required]
         [MaxLength(25)]

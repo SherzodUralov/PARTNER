@@ -10,6 +10,7 @@ namespace PARTNER.Models
     public class Nogiron
     {
         [Key]
+        [MaxLength(8)]
         public string Code { get; set; }
         [MaxLength(30)]
         public int NogironName { get; set; }

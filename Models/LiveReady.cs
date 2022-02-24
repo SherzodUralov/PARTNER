@@ -10,6 +10,7 @@ namespace PARTNER.Models
     public class LiveReady
     {
         [Key]
+        [MaxLength(8)]
         public string Code { get; set; }
         public string Mahalla { get; set; }
         public string DistrictCode { get; set; }

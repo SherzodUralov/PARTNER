@@ -10,6 +10,7 @@ namespace PARTNER.Models
     public class Region
     {
         [Key]
+        [MaxLength(4)]
         public string Code { get; set; }
         [MaxLength(35)]
         public string RegionName { get; set; }
