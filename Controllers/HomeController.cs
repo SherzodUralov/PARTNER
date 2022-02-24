@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PARTNER.Models;
+using PARTNER.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -11,23 +12,33 @@ namespace PARTNER.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        //private readonly ILogger<HomeController> _logger;
+        private readonly IStudentRepository repository;
 
-        public HomeController(ILogger<HomeController> logger)
+        //public HomeController(ILogger<HomeController> logger)
+        //{
+        //    _logger = logger;
+        //}
+        public HomeController(IStudentRepository repository)
         {
-            _logger = logger;
+            this.repository = repository;
         }
 
-        public IActionResult Index()
+        public ViewResult Index() 
         {
-            return View();
-        }
+            HomeIndexViewModel viewModel = new HomeIndexViewModel()
+            {
+                students = repository.GETALL()
+            };
 
+            return View(viewModel);
+        }
         public IActionResult Privacy()
         {
+           
             return View();
         }
-
+      
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
