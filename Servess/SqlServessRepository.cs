@@ -34,5 +34,10 @@ namespace PARTNER.Servess
         {
             return dbContext.Tyutors;
         }
+
+        Tyutor ITyutorRepository.Get(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

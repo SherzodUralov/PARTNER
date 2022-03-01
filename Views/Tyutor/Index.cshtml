@@ -10,15 +10,35 @@
                 <tr>
                     <th scope="col">FirstName</th>
                     <th scope="col">LastName</th>
+                    <th scope="col">SurName</th>
+                    <th scope="col">Birthday</th>
+                    <th scope="col">Region</th>
+                    <th scope="col">District</th>
+                    <th scope="col">Staj</th>
+                    <th scope="col">MobileNamber</th>
+                    <th scope="col">TelegramNamber</th>
+                    <th scope="col">Resume</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Degree</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model.tyutors)
                 {
-                    <tr>
-                        <td>@item.FirstName</td>
-                        <td>@item.LastName</td>
-                    </tr>
+                <tr>
+                    <td>@item.FirstName</td>
+                    <td>@item.LastName</td>
+                    <td>@item.SureName</td>
+                    <td>@item.Birthday</td>
+                    <td>@item.Region</td>
+                    <td>@item.District</td>
+                    <td>@item.Staj</td>
+                    <td>@item.MobileNamber</td>
+                    <td>@item.TelegramNamber</td>
+                    <td>@item.Resime</td>
+                    <td>@item.Gender</td>
+                    <td>@item.Degree</td>
+                </tr>
 
                 }
             </tbody>

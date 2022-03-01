@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace PARTNER.Servess
 {
     public interface ITyutorRepository
-    {   
-     IEnumerable<Tyutor> GetAlll();
+    {
+        Tyutor Get(int id);
+        IEnumerable<Tyutor> GetAlll();
     }
 }
