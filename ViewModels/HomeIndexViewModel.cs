@@ -8,7 +8,8 @@ namespace PARTNER.ViewModels
 {
     public class HomeIndexViewModel
     {
-        public IEnumerable<Student> students { get; set; }
+        // public IEnumerable<Student> students { get; set; }
         public IEnumerable<Tyutor> tyutors { get; set; }
+        public IEnumerable<Region> regions { get; set; }
     }
 }

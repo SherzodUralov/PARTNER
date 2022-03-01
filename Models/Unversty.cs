@@ -9,7 +9,9 @@ namespace PARTNER.Models
 {
     public class Unversty
     {
-        public int UnverstyId { get; set; }
+        [Key]
+        [MaxLength(7)]
+        public string Code { get; set; }
         [Required]
         [MaxLength(40)]
         public string UnverstyName { get; set; }

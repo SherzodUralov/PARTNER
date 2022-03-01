@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PARTNER.Models.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -13,6 +14,7 @@ namespace PARTNER.Models
         public int ParentsId { get; set; }
         [Required]
         [MaxLength(30)]
+        public ParentsType ParentsType { get; set; }
         public string FirstName { get; set; }
         [Required]
         [MaxLength(30)]

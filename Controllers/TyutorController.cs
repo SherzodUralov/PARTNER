@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PARTNER.Servess;
+using PARTNER.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +10,19 @@ namespace PARTNER.Controllers
 {
     public class TyutorController : Controller
     {
-        public IActionResult Index()
+        private readonly ITyutorRepository repositoryy;
+
+        public TyutorController(ITyutorRepository repository)
         {
-            return View();
+            this.repositoryy = repository;
+        }
+        public ViewResult Index()
+        {
+            HomeIndexViewModel viewModel = new HomeIndexViewModel() 
+            {
+                tyutors = repositoryy.GetAlll()
+            };
+            return View(viewModel);
         }
     }
 }

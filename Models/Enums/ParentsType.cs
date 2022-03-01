@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PARTNER.Models
+namespace PARTNER.Models.Enums
 {
-    public enum LiveTypes
+    public enum ParentsType
     {
-        Ijara,
-        Yotoqxona
+        Onasi,
+        Otasi
     }
 }

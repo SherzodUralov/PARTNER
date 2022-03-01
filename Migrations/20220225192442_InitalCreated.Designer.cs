@@ -10,35 +10,34 @@ using PARTNER.Context;
 namespace PARTNER.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220224062648_IntialCreated")]
-    partial class IntialCreated
+    [Migration("20220225192442_InitalCreated")]
+    partial class InitalCreated
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.4")
+                .HasAnnotation("ProductVersion", "5.0.12")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("PARTNER.Models.Branch", b =>
                 {
-                    b.Property<int>("BranchId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Code")
+                        .HasMaxLength(7)
+                        .HasColumnType("nvarchar(7)");
 
                     b.Property<string>("BranchName")
                         .IsRequired()
                         .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
-                    b.Property<int>("FacultyId")
-                        .HasColumnType("int");
+                    b.Property<string>("FacultyCode")
+                        .HasColumnType("nvarchar(7)");
 
-                    b.HasKey("BranchId");
+                    b.HasKey("Code");
 
-                    b.HasIndex("FacultyId");
+                    b.HasIndex("FacultyCode");
 
                     b.ToTable("Branches");
                 });
@@ -94,22 +93,21 @@ namespace PARTNER.Migrations
 
             modelBuilder.Entity("PARTNER.Models.Faculty", b =>
                 {
-                    b.Property<int>("FacultyId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Code")
+                        .HasMaxLength(7)
+                        .HasColumnType("nvarchar(7)");
 
                     b.Property<string>("FacultyName")
                         .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
-                    b.Property<int>("UnverstyId")
-                        .HasColumnType("int");
+                    b.Property<string>("UnverstyCode")
+                        .HasColumnType("nvarchar(7)");
 
-                    b.HasKey("FacultyId");
+                    b.HasKey("Code");
 
-                    b.HasIndex("UnverstyId");
+                    b.HasIndex("UnverstyCode");
 
                     b.ToTable("Faculties");
                 });
@@ -120,8 +118,8 @@ namespace PARTNER.Migrations
                         .HasMaxLength(6)
                         .HasColumnType("nvarchar(6)");
 
-                    b.Property<int>("BranchId")
-                        .HasColumnType("int");
+                    b.Property<string>("BranchCode")
+                        .HasColumnType("nvarchar(7)");
 
                     b.Property<string>("GroupName")
                         .IsRequired()
@@ -133,7 +131,7 @@ namespace PARTNER.Migrations
 
                     b.HasKey("Code");
 
-                    b.HasIndex("BranchId");
+                    b.HasIndex("BranchCode");
 
                     b.HasIndex("TyutorId");
 
@@ -221,9 +219,7 @@ namespace PARTNER.Migrations
                         .HasColumnType("nvarchar(4)");
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("Job")
                         .HasColumnType("int");
@@ -243,6 +239,10 @@ namespace PARTNER.Migrations
 
                     b.Property<string>("NogironCode")
                         .HasColumnType("nvarchar(8)");
+
+                    b.Property<int>("ParentsType")
+                        .HasMaxLength(30)
+                        .HasColumnType("int");
 
                     b.Property<string>("RegionCode")
                         .HasColumnType("nvarchar(4)");
@@ -281,31 +281,6 @@ namespace PARTNER.Migrations
                     b.ToTable("Regions");
                 });
 
-            modelBuilder.Entity("PARTNER.Models.Speciality", b =>
-                {
-                    b.Property<int>("SpecialityId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("SpecialityName")
-                        .HasMaxLength(40)
-                        .HasColumnType("nvarchar(40)");
-
-                    b.Property<int>("TyutorId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Years")
-                        .HasMaxLength(18)
-                        .HasColumnType("nvarchar(18)");
-
-                    b.HasKey("SpecialityId");
-
-                    b.HasIndex("TyutorId");
-
-                    b.ToTable("Specialities");
-                });
-
             modelBuilder.Entity("PARTNER.Models.Student", b =>
                 {
                     b.Property<int>("StudentId")
@@ -319,6 +294,9 @@ namespace PARTNER.Migrations
                     b.Property<int?>("Boquvchi")
                         .HasColumnType("int");
 
+                    b.Property<string>("BranchCode")
+                        .HasColumnType("nvarchar(7)");
+
                     b.Property<int?>("Contract")
                         .HasColumnType("int");
 
@@ -330,6 +308,9 @@ namespace PARTNER.Migrations
 
                     b.Property<string>("DistrictCode")
                         .HasColumnType("nvarchar(4)");
+
+                    b.Property<string>("FacultyCode")
+                        .HasColumnType("nvarchar(7)");
 
                     b.Property<int?>("Familly")
                         .HasColumnType("int");
@@ -392,9 +373,16 @@ namespace PARTNER.Migrations
                     b.Property<string>("TelegramNamber")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("UnverstyCode")
+                        .HasColumnType("nvarchar(7)");
+
                     b.HasKey("StudentId");
 
+                    b.HasIndex("BranchCode");
+
                     b.HasIndex("DistrictCode");
+
+                    b.HasIndex("FacultyCode");
 
                     b.HasIndex("GroupCode");
 
@@ -407,6 +395,8 @@ namespace PARTNER.Migrations
                     b.HasIndex("ParentsId");
 
                     b.HasIndex("RegionCode");
+
+                    b.HasIndex("UnverstyCode");
 
                     b.ToTable("Students");
                 });
@@ -476,10 +466,9 @@ namespace PARTNER.Migrations
 
             modelBuilder.Entity("PARTNER.Models.Unversty", b =>
                 {
-                    b.Property<int>("UnverstyId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Code")
+                        .HasMaxLength(7)
+                        .HasColumnType("nvarchar(7)");
 
                     b.Property<string>("RegionCode")
                         .HasColumnType("nvarchar(4)");
@@ -492,7 +481,7 @@ namespace PARTNER.Migrations
                         .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
-                    b.HasKey("UnverstyId");
+                    b.HasKey("Code");
 
                     b.HasIndex("RegionCode");
 
@@ -503,9 +492,7 @@ namespace PARTNER.Migrations
                 {
                     b.HasOne("PARTNER.Models.Faculty", "Faculty")
                         .WithMany()
-                        .HasForeignKey("FacultyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("FacultyCode");
 
                     b.Navigation("Faculty");
                 });
@@ -534,9 +521,7 @@ namespace PARTNER.Migrations
                 {
                     b.HasOne("PARTNER.Models.Unversty", "Unversty")
                         .WithMany()
-                        .HasForeignKey("UnverstyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UnverstyCode");
 
                     b.Navigation("Unversty");
                 });
@@ -545,9 +530,7 @@ namespace PARTNER.Migrations
                 {
                     b.HasOne("PARTNER.Models.Branch", "Branch")
                         .WithMany()
-                        .HasForeignKey("BranchId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("BranchCode");
 
                     b.HasOne("PARTNER.Models.Tyutor", "Tyutor")
                         .WithMany()
@@ -590,22 +573,19 @@ namespace PARTNER.Migrations
                     b.Navigation("Region");
                 });
 
-            modelBuilder.Entity("PARTNER.Models.Speciality", b =>
-                {
-                    b.HasOne("PARTNER.Models.Tyutor", "Tyutor")
-                        .WithMany()
-                        .HasForeignKey("TyutorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Tyutor");
-                });
-
             modelBuilder.Entity("PARTNER.Models.Student", b =>
                 {
+                    b.HasOne("PARTNER.Models.Branch", "Branch")
+                        .WithMany()
+                        .HasForeignKey("BranchCode");
+
                     b.HasOne("PARTNER.Models.District", "District")
                         .WithMany()
                         .HasForeignKey("DistrictCode");
+
+                    b.HasOne("PARTNER.Models.Faculty", "Faculty")
+                        .WithMany()
+                        .HasForeignKey("FacultyCode");
 
                     b.HasOne("PARTNER.Models.Group", "Group")
                         .WithMany()
@@ -635,7 +615,15 @@ namespace PARTNER.Migrations
                         .WithMany()
                         .HasForeignKey("RegionCode");
 
+                    b.HasOne("PARTNER.Models.Unversty", "Unversty")
+                        .WithMany()
+                        .HasForeignKey("UnverstyCode");
+
+                    b.Navigation("Branch");
+
                     b.Navigation("District");
+
+                    b.Navigation("Faculty");
 
                     b.Navigation("Group");
 
@@ -648,6 +636,8 @@ namespace PARTNER.Migrations
                     b.Navigation("Parents");
 
                     b.Navigation("Region");
+
+                    b.Navigation("Unversty");
                 });
 
             modelBuilder.Entity("PARTNER.Models.Tyutor", b =>

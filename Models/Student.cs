@@ -38,6 +38,12 @@ namespace PARTNER.Models
         public string DistrictCode { get; set; }
         public virtual District District { get; set; }
         public string Mahalla { get; set; }
+        public string UnverstyCode { get; set; }
+        public virtual Unversty Unversty { get; set; }
+        public string FacultyCode { get; set; }
+        public virtual Faculty Faculty { get; set; }
+        public string BranchCode { get; set; }
+        public virtual Branch Branch { get; set; }
         public string GroupCode { get; set; }
         public virtual Group Group { get; set; }
         public int Cours { get; set; }

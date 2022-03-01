@@ -16,7 +16,7 @@ namespace PARTNER.Models
         [MaxLength(40)]
         [Display(Name ="GroupName")]
         public string GroupName { get; set; }
-        public int BranchId { get; set; }
+        public string BranchCode { get; set; }
         public virtual Branch Branch { get; set; }
         public int TyutorId { get; set; }
         public virtual Tyutor Tyutor { get; set; }

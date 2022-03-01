@@ -9,13 +9,15 @@ namespace PARTNER.Models
 {
     public class Branch
     {
-        public int BranchId { get; set; }
+        [Key]
+        [MaxLength(7)]
+        public string Code { get; set; }
         [Required]
         [MaxLength(40)]
         [Display(Name ="BranchName")]
         public string BranchName { get; set; }
         [ForeignKey("Faculty")]
-        public int FacultyId { get; set; }
+        public string FacultyCode { get; set; }
         public virtual Faculty Faculty { get; set; }
     }
 }

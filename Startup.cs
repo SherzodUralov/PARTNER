@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PARTNER.Context;
 using PARTNER.Models;
+using PARTNER.Servess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,12 +26,11 @@ namespace PARTNER
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddScoped<IRegionRepository, SqlServessRepository>();
+            services.AddScoped<ITyutorRepository, SqlServessRepository>();
             //services.AddMvc(options => options.EnableEndpointRouting = false);
-            services.AddScoped<IStudentRepository, SqlMigrationRepository>();
             services.AddDbContextPool<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("PARTNER_DB")));
             services.AddControllersWithViews();
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

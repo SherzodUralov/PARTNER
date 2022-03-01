@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PARTNER.Migrations
 {
-    public partial class IntialCreated : Migration
+    public partial class InitalCreated : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -72,15 +72,14 @@ namespace PARTNER.Migrations
                 name: "Unversties",
                 columns: table => new
                 {
-                    UnverstyId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Code = table.Column<string>(type: "nvarchar(7)", maxLength: 7, nullable: false),
                     UnverstyName = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false),
                     RegionId = table.Column<int>(type: "int", nullable: false),
                     RegionCode = table.Column<string>(type: "nvarchar(4)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Unversties", x => x.UnverstyId);
+                    table.PrimaryKey("PK_Unversties", x => x.Code);
                     table.ForeignKey(
                         name: "FK_Unversties_Regions_RegionCode",
                         column: x => x.RegionCode,
@@ -115,7 +114,8 @@ namespace PARTNER.Migrations
                 {
                     ParentsId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    ParentsType = table.Column<int>(type: "int", maxLength: 30, nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     SureName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     Birthday = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -191,61 +191,38 @@ namespace PARTNER.Migrations
                 name: "Faculties",
                 columns: table => new
                 {
-                    FacultyId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Code = table.Column<string>(type: "nvarchar(7)", maxLength: 7, nullable: false),
                     FacultyName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
-                    UnverstyId = table.Column<int>(type: "int", nullable: false)
+                    UnverstyCode = table.Column<string>(type: "nvarchar(7)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Faculties", x => x.FacultyId);
+                    table.PrimaryKey("PK_Faculties", x => x.Code);
                     table.ForeignKey(
-                        name: "FK_Faculties_Unversties_UnverstyId",
-                        column: x => x.UnverstyId,
+                        name: "FK_Faculties_Unversties_UnverstyCode",
+                        column: x => x.UnverstyCode,
                         principalTable: "Unversties",
-                        principalColumn: "UnverstyId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Specialities",
-                columns: table => new
-                {
-                    SpecialityId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    SpecialityName = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: true),
-                    Years = table.Column<string>(type: "nvarchar(18)", maxLength: 18, nullable: true),
-                    TyutorId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Specialities", x => x.SpecialityId);
-                    table.ForeignKey(
-                        name: "FK_Specialities_Tyutors_TyutorId",
-                        column: x => x.TyutorId,
-                        principalTable: "Tyutors",
-                        principalColumn: "TyutorId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Code",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Branches",
                 columns: table => new
                 {
-                    BranchId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Code = table.Column<string>(type: "nvarchar(7)", maxLength: 7, nullable: false),
                     BranchName = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false),
-                    FacultyId = table.Column<int>(type: "int", nullable: false)
+                    FacultyCode = table.Column<string>(type: "nvarchar(7)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Branches", x => x.BranchId);
+                    table.PrimaryKey("PK_Branches", x => x.Code);
                     table.ForeignKey(
-                        name: "FK_Branches_Faculties_FacultyId",
-                        column: x => x.FacultyId,
+                        name: "FK_Branches_Faculties_FacultyCode",
+                        column: x => x.FacultyCode,
                         principalTable: "Faculties",
-                        principalColumn: "FacultyId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Code",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -254,18 +231,18 @@ namespace PARTNER.Migrations
                 {
                     Code = table.Column<string>(type: "nvarchar(6)", maxLength: 6, nullable: false),
                     GroupName = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false),
-                    BranchId = table.Column<int>(type: "int", nullable: false),
+                    BranchCode = table.Column<string>(type: "nvarchar(7)", nullable: true),
                     TyutorId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Groups", x => x.Code);
                     table.ForeignKey(
-                        name: "FK_Groups_Branches_BranchId",
-                        column: x => x.BranchId,
+                        name: "FK_Groups_Branches_BranchCode",
+                        column: x => x.BranchCode,
                         principalTable: "Branches",
-                        principalColumn: "BranchId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Code",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Groups_Tyutors_TyutorId",
                         column: x => x.TyutorId,
@@ -294,6 +271,9 @@ namespace PARTNER.Migrations
                     RegionCode = table.Column<string>(type: "nvarchar(4)", nullable: true),
                     DistrictCode = table.Column<string>(type: "nvarchar(4)", nullable: true),
                     Mahalla = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UnverstyCode = table.Column<string>(type: "nvarchar(7)", nullable: true),
+                    FacultyCode = table.Column<string>(type: "nvarchar(7)", nullable: true),
+                    BranchCode = table.Column<string>(type: "nvarchar(7)", nullable: true),
                     GroupCode = table.Column<string>(type: "nvarchar(6)", nullable: true),
                     Cours = table.Column<int>(type: "int", nullable: false),
                     LiveReadyCode = table.Column<string>(type: "nvarchar(8)", nullable: true),
@@ -308,9 +288,21 @@ namespace PARTNER.Migrations
                 {
                     table.PrimaryKey("PK_Students", x => x.StudentId);
                     table.ForeignKey(
+                        name: "FK_Students_Branches_BranchCode",
+                        column: x => x.BranchCode,
+                        principalTable: "Branches",
+                        principalColumn: "Code",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
                         name: "FK_Students_Districts_DistrictCode",
                         column: x => x.DistrictCode,
                         principalTable: "Districts",
+                        principalColumn: "Code",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Students_Faculties_FacultyCode",
+                        column: x => x.FacultyCode,
+                        principalTable: "Faculties",
                         principalColumn: "Code",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -349,6 +341,12 @@ namespace PARTNER.Migrations
                         principalTable: "Regions",
                         principalColumn: "Code",
                         onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Students_Unversties_UnverstyCode",
+                        column: x => x.UnverstyCode,
+                        principalTable: "Unversties",
+                        principalColumn: "Code",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -374,9 +372,9 @@ namespace PARTNER.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Branches_FacultyId",
+                name: "IX_Branches_FacultyCode",
                 table: "Branches",
-                column: "FacultyId");
+                column: "FacultyCode");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CHECK_StudentId",
@@ -389,14 +387,14 @@ namespace PARTNER.Migrations
                 column: "RegionCode");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Faculties_UnverstyId",
+                name: "IX_Faculties_UnverstyCode",
                 table: "Faculties",
-                column: "UnverstyId");
+                column: "UnverstyCode");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Groups_BranchId",
+                name: "IX_Groups_BranchCode",
                 table: "Groups",
-                column: "BranchId");
+                column: "BranchCode");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Groups_TyutorId",
@@ -424,14 +422,19 @@ namespace PARTNER.Migrations
                 column: "RegionCode");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Specialities_TyutorId",
-                table: "Specialities",
-                column: "TyutorId");
+                name: "IX_Students_BranchCode",
+                table: "Students",
+                column: "BranchCode");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Students_DistrictCode",
                 table: "Students",
                 column: "DistrictCode");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Students_FacultyCode",
+                table: "Students",
+                column: "FacultyCode");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Students_GroupCode",
@@ -464,6 +467,11 @@ namespace PARTNER.Migrations
                 column: "RegionCode");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Students_UnverstyCode",
+                table: "Students",
+                column: "UnverstyCode");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Tyutors_DistrictCode",
                 table: "Tyutors",
                 column: "DistrictCode");
@@ -483,9 +491,6 @@ namespace PARTNER.Migrations
         {
             migrationBuilder.DropTable(
                 name: "CHECK");
-
-            migrationBuilder.DropTable(
-                name: "Specialities");
 
             migrationBuilder.DropTable(
                 name: "Students");

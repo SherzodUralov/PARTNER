@@ -25,7 +25,6 @@ namespace PARTNER.Context
         public  DbSet<Nogiron> Nogirons { get; set; }
         public  DbSet<Parents> Parents { get; set; }
         public  DbSet<Region> Regions { get; set; }
-        public  DbSet<Speciality> Specialities { get; set; }
         public  DbSet<Tyutor> Tyutors { get; set; }
         public  DbSet<Unversty> Unversties { get; set; }
     }
