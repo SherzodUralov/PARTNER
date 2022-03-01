@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PARTNER.Servess
 {
-    public interface ITyutorRepository : IStudentRepository
+    public interface ITyutorRepository
     {   
      IEnumerable<Tyutor> GetAlll();
     }

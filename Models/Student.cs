@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -29,8 +29,6 @@ namespace PARTNER.Models
         public string MobileNamber { get; set; }
         public string TelegramNamber { get; set; }
         public Nations? Nation { get; set; }
-        public int ParentsId { get; set; }
-        public virtual Parents Parents { get; set; }
         public int InteristId { get; set; }
         public virtual Interist Interist { get; set; }
         public string RegionCode { get; set; }

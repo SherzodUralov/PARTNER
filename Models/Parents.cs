@@ -27,6 +27,8 @@ namespace PARTNER.Models
         [MaxLength(20)]
         public string MobileNamber { get; set; }
         public string TelegramNamber { get; set; }
+        public int StudentId { get; set; }
+        public virtual Student Student { get; set; }
         public string RegionCode { get; set; }
         public virtual Region Region { get; set; }
         public string DistrictCode { get; set; }

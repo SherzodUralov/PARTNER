@@ -28,6 +28,7 @@ namespace PARTNER
         {
             services.AddScoped<IRegionRepository, SqlServessRepository>();
             services.AddScoped<ITyutorRepository, SqlServessRepository>();
+            services.AddScoped<IStudentRepository, SqlServessRepository>();
             //services.AddMvc(options => options.EnableEndpointRouting = false);
             services.AddDbContextPool<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("PARTNER_DB")));
             services.AddControllersWithViews();

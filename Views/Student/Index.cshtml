@@ -1,0 +1,38 @@
+﻿@model HomeIndexViewModel
+
+@{
+    ViewData["Title"] = "Home Student";
+}
+
+<div class="row">
+    <div class="col-12">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">FirstName</th>
+                    <th scope="col">LastName</th>
+                    <th scope="col">SureName</th>
+                    <th scope="col">Birthday</th>
+                    <th scope="col">Passport</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">MobileNamber</th>
+                    <th scope="col">TelegramNamber</th>
+                    <th scope="col">LastName</th>
+                    <th scope="col">LastName</th>
+                    <th scope="col">LastName</th>
+                    <th scope="col">LastName</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.regions)
+                {
+                    <tr>
+                        <td>@item.Code</td>
+                        <td>@item.RegionName</td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
